@@ -24,7 +24,7 @@ End state:
     else, program ends.
 */
 
-function getComputerChoice() { // ==> gets paper, rock or scissors randomly.
+function getComputerChoice() { // ==> returns paper, rock or scissors randomly.
     switch (Math.floor(Math.random() * 3)) {
         case 0:
             return "Rock";
@@ -35,7 +35,7 @@ function getComputerChoice() { // ==> gets paper, rock or scissors randomly.
     }
 }
 
-function getUserChoice() { // ==> gets paper, rock or scissors from user's input.
+function getUserChoice() { // ==> returns paper, rock or scissors from user's input.
     let isValid = false;
     let userInput = "";
     while (!isValid) {
@@ -48,11 +48,25 @@ function getUserChoice() { // ==> gets paper, rock or scissors from user's input
             alert("ERROR-1: Invalid choice input, rewrite your choice");
         }
     }
+    return userInput;
 }
 
-//playRound() ==> gets and compares players inputs, then outputs results.
-
-
+function playRound(userChoice, computerChoice) {// ==> gets and compares players inputs, then outputs results.
+    console.log("User Choice: " + userChoice + " / Computer Choice: " + computerChoice);
+    switch (true) {
+        case (userChoice == "Rock" && computerChoice == "Paper"):
+        case (userChoice == "Paper" && computerChoice == "Scissors"):
+        case (userChoice == "Scissors" && computerChoice == "Rock"):
+            return "Computer";
+        case (userChoice == "Rock" && computerChoice == "Scissors"):
+        case (userChoice == "Paper" && computerChoice == "Rock"):
+        case (userChoice == "Scissors" && computerChoice == "Paper"):
+            return "User";
+        default:
+            return "Tie";
+    }
+}
+console.log("Winner: " + playRound(getUserChoice(), getComputerChoice()));
 //playGame() ==> calls playround 5 times and keeps the score, outputs the final winner.
 
 
