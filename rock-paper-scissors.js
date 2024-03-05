@@ -66,8 +66,27 @@ function playRound(userChoice, computerChoice) {// ==> gets and compares players
             return "Tie";
     }
 }
-console.log("Winner: " + playRound(getUserChoice(), getComputerChoice()));
-//playGame() ==> calls playround 5 times and keeps the score, outputs the final winner.
+//console.log("Winner: " + playRound(getUserChoice(), getComputerChoice()));
 
+function playGame() {// ==> resets score, calls playRound 5 times and keeps the score, outputs the final winner.
+    let userScore = 0;
+    let computerScore = 0;
 
-//resetGame ==> ask the user if another game should be played, resets game values and calls playGame() if true.
+    for (let i = 1; i <= 5; i++) {
+        console.log(`-----ROUND ${i}!-----`)
+        let roundResult = playRound(getUserChoice(), getComputerChoice());
+        if (roundResult == "Computer") {
+            computerScore++;
+            console.log("Computer Wins!");
+        } else if (roundResult == "User") {
+            userScore++;
+            console.log("User Wins!");
+        } else {
+            console.log("No one Wins!");
+        }
+        console.log(`Current score ==> User: ${userScore} /  Computer: ${computerScore}`)
+    }
+}
+
+playGame();
+//endGame() ==> recieves scores and outputs the winner, then ask the user if another game should be played.
