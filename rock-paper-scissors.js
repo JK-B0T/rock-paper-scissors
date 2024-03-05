@@ -69,10 +69,11 @@ function playRound(userChoice, computerChoice) {// ==> gets and compares players
 //console.log("Winner: " + playRound(getUserChoice(), getComputerChoice()));
 
 function playGame() {// ==> resets score, calls playRound 5 times and keeps the score, outputs the final winner.
+    const NUMBER_OF_ROUNDS = 5;
     let userScore = 0;
     let computerScore = 0;
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= NUMBER_OF_ROUNDS; i++) {
         console.log(`-----ROUND ${i}!-----`)
         let roundResult = playRound(getUserChoice(), getComputerChoice());
         if (roundResult == "Computer") {
