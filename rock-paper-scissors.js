@@ -86,7 +86,24 @@ function playGame() {// ==> resets score, calls playRound 5 times and keeps the 
         }
         console.log(`Current score ==> User: ${userScore} /  Computer: ${computerScore}`)
     }
+    endGame(userScore, computerScore);
+}
+
+function endGame(userScore, computerScore) { // ==> recieves scores and outputs the winner, then ask the user if another game should be played.
+    if (userScore > computerScore) {
+        console.log("The Final Champion is: USER!!!")
+    } else if (userScore < computerScore) {
+        console.log("The Final Champion is: COMPUTER!!!")
+    } else {
+        console.log("The battle was close: it is a tie!")
+    }
+    
+    if (confirm("¿Do you want to play another game?")) {
+        console.log("-----NEW GAME BEGINS!-----");
+        playGame();
+    } else {
+        console.log("Well played and see you next time!");
+    }
 }
 
 playGame();
-//endGame() ==> recieves scores and outputs the winner, then ask the user if another game should be played.
