@@ -1,30 +1,5 @@
-/*
-Rock Paper Scissors - General inputs, outputs and end state.
-
-A person and a computer play the game for 5 rounds.
-
-Inputs:
--A computer randomly selects one of the 3 options, 
--The user inputs one of the 3 options to,
-
-Outputs:
-The inputs are compared, the resulting output could be one of three:
-    -Inputs are equal: Score doesn't changes, a tie message is printed.
-    -Computer input wins: Adds 1 to computer's score, a computer win message is printed.
-    -User input wins: Adds 1 to user's score, a user win message is printed.
-
-When the 5 rounds are finished, depending on the score, 3 final outputs are possible:
-    -Scores are equal: Tie message is printed.
-    -Computer score is higher: Computer final win message is printed.
-    -User score is higher: User final win message is printed.
-
-End state:
-    A message pop ups asking the user if he wnat's to play again,
-    if y it's written, scores are reset and another game is called,
-    else, program ends.
-*/
-
-function getComputerChoice() { // ==> returns paper, rock or scissors randomly.
+/*Returns paper, rock or scissors randomly to simulate another player.*/
+function getComputerChoice() { 
     switch (Math.floor(Math.random() * 3)) {
         case 0:
             return "Rock";
@@ -35,13 +10,13 @@ function getComputerChoice() { // ==> returns paper, rock or scissors randomly.
     }
 }
 
-function getUserChoice() { // ==> returns paper, rock or scissors from user's input.
+/*Returns paper, rock or scissors from user's input.*/
+function getUserChoice() { 
     let isValid = false;
     let userInput = "";
     while (!isValid) {
         userInput = prompt("Select your choice by writting Rock, Paper or Scissors");
         userInput = userInput.substring(0, 1).toUpperCase() + userInput.substring(1).toLowerCase();
-        //console.log("User Choice: " + userInput + " / Computer Choice: " + getComputerChoice());
         if (userInput == "Rock" || userInput == "Paper" || userInput == "Scissors") {
             isValid = true;
         } else {
@@ -51,7 +26,9 @@ function getUserChoice() { // ==> returns paper, rock or scissors from user's in
     return userInput;
 }
 
-function playRound(userChoice, computerChoice) {// ==> gets and compares players inputs, then outputs results.
+/*Gets, prints and compares both players input, then outputs the winner based on rock, paper and scissors rules.
+An iteration of this function can be considered as 1 round of the game*/
+function playRound(userChoice, computerChoice) {
     console.log("User Choice: " + userChoice + " / Computer Choice: " + computerChoice);
     switch (true) {
         case (userChoice == "Rock" && computerChoice == "Paper"):
@@ -66,9 +43,10 @@ function playRound(userChoice, computerChoice) {// ==> gets and compares players
             return "Tie";
     }
 }
-//console.log("Winner: " + playRound(getUserChoice(), getComputerChoice()));
 
-function playGame() {// ==> resets score, calls playRound 5 times and keeps the score, outputs the final winner.
+/*Sets, prints and resets score, calls playRound 5 times and keeps the score to call endGame() with it.
+Used to play a full round of 5 rounds*/
+function playGame() {
     const NUMBER_OF_ROUNDS = 5;
     let userScore = 0;
     let computerScore = 0;
@@ -90,7 +68,8 @@ function playGame() {// ==> resets score, calls playRound 5 times and keeps the 
     endGame(userScore, computerScore);
 }
 
-function endGame(userScore, computerScore) { // ==> recieves scores and outputs the winner, then ask the user if another game should be played.
+/*Receives scores and outputs the final winner, then ask the user if another game should be played.*/
+function endGame(userScore, computerScore) {
     if (userScore > computerScore) {
         console.log("The Final Champion is: USER!!!")
     } else if (userScore < computerScore) {
