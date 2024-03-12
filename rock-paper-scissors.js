@@ -1,4 +1,4 @@
-// This function returns paper, rock or scissors randomly to have a computer player.
+/*Returns paper, rock or scissors randomly to simulate another player.*/
 function getComputerChoice() { 
     switch (Math.floor(Math.random() * 3)) {
         case 0:
@@ -10,8 +10,8 @@ function getComputerChoice() {
     }
 }
 
-// This function returns paper, rock or scissors from user's input so the user can play.
-function getUserChoice() {
+/*Returns paper, rock or scissors from user's input.*/
+function getUserChoice() { 
     let isValid = false;
     let userInput = "";
     while (!isValid) {
@@ -26,7 +26,8 @@ function getUserChoice() {
     return userInput;
 }
 
-// This function gets and compares players inputs to set who is the round winner.
+/*Gets, prints and compares both players input, then outputs the winner based on rock, paper and scissors rules.
+An iteration of this function can be considered as 1 round of the game*/
 function playRound(userChoice, computerChoice) {
     console.log("User Choice: " + userChoice + " / Computer Choice: " + computerChoice);
     switch (true) {
@@ -43,8 +44,8 @@ function playRound(userChoice, computerChoice) {
     }
 }
 
-/*This function resets score so more games could be played from zero, 
-calls playRound 5 times and keeps the score so at the end it can be compared to set a final winner.*/
+/*Sets, prints and resets score, calls playRound 5 times and keeps the score to call endGame() with it.
+Used to play a full round of 5 rounds*/
 function playGame() {
     const NUMBER_OF_ROUNDS = 5;
     let userScore = 0;
@@ -67,8 +68,8 @@ function playGame() {
     endGame(userScore, computerScore);
 }
 
-// This function recieves scores and outputs the winner, then ask the user if another game should be played.
-function endGame(userScore, computerScore) { 
+/*Receives scores and outputs the final winner, then ask the user if another game should be played.*/
+function endGame(userScore, computerScore) {
     if (userScore > computerScore) {
         console.log("The Final Champion is: USER!!!")
     } else if (userScore < computerScore) {
