@@ -53,7 +53,7 @@ function playGame() {
 
     for (let i = 1; i <= NUMBER_OF_ROUNDS; i++) {
         console.log(`-----ROUND ${i}!-----`)
-        let roundResult = playRound(getUserChoice(), getComputerChoice());
+        let roundResult = playRound(getComputerChoice(), getComputerChoice()); //Remember to put getUserChoice() as the first argument.
         if (roundResult == "Computer") {
             computerScore++;
             console.log("Computer Wins!");
